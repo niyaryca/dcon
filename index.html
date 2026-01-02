@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DCON Nepal Electronics | Premium TV & Home Theater</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .tv-card:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-black text-white selection:bg-blue-500">
+
+    <nav class="sticky top-0 z-50 glass px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <div class="w-20 h-20 rounded-lg flex items-center justify-center font-bold">
+                <img src="logo.jpg">
+            </div>
+            
+        </div>
+        <div class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
+            <a href="#" class="hover:text-white transition">Inventory</a>
+            <a href="#" class="hover:text-white transition">OLED Series</a>
+            <a href="#" class="hover:text-white transition">Support</a>
+        </div>
+        <button class="bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded-full text-sm font-semibold transition">
+            Contact Sales
+        </button>
+    </nav>
+
+    <header class="relative h-[60vh] flex items-center justify-center text-center px-4 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-blue-900/20 to-black z-0"></div>
+        <div class="relative z-10">
+            <span class="text-blue-400 font-semibold tracking-widest uppercase text-xs">New Arrivals 2026</span>
+            <h1 class="text-5xl md:text-7xl font-black mt-4 mb-6">Cinematic Excellence.</h1>
+            <p class="text-gray-400 max-w-2xl mx-auto text-lg">Experience the next generation of 8K and OLED displays. Local pickup and expert installation available.</p>
+        </div>
+    </header>
+
+    <section class="max-w-7xl mx-auto px-6 py-12">
+        <div class="flex justify-between items-end mb-10">
+            <div>
+                <h2 class="text-3xl font-bold">Current Inventory</h2>
+                <p class="text-gray-500">Live stock updates from our warehouse</p>
+            </div>
+            <div class="text-sm text-blue-500 cursor-pointer">View All Models →</div>
+        </div>
+
+        <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            </div>
+    </section>
+
+    <footer class="border-t border-gray-800 mt-20 py-12 text-center text-gray-600 text-sm">
+        <p>&copy; 2026 DCON Electronics. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // DATA SOURCE (Think of this as your Excel Sheet)
+        const inventory = [
+            { id: 1, brand: "DCON", model: "32\" OLED 4K", price: 1599, stock: "In Stock", specs: "120Hz | Dolby Vision" },
+            { id: 2, brand: "DCON", model: "42\" QD-OLED", price: 2299, stock: "Low Stock", specs: "Infinity One Design" },
+            { id: 3, brand: "DCON", model: "55\" Bravia XR", price: 3799, stock: "In Stock", specs: "Cognitive Processor XR" },
+            { id: 4, brand: "DCON", model: "65\" Mini-LED", price: 7999, stock: "Backorder", specs: "2300 Nits Peak Brightness" }
+        ];
+
+        const grid = document.getElementById('product-grid');
+
+        inventory.forEach(item => {
+            const card = document.createElement('div');
+            card.className = "tv-card glass p-4 rounded-2xl flex flex-col";
+            
+            card.innerHTML = `
+                <div class="bg-gray-800 aspect-video rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+
+                     <img class="text-gray-600 font-bold text-lg" src = "tv.jpg"></img>
+                </div>
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-bold text-xl">${item.model}</h3>
+                    <span class="text-xs px-2 py-1 rounded border ${item.stock === 'In Stock' ? 'border-green-500 text-green-500' : 'border-orange-500 text-orange-500'}">
+                        ${item.stock}
+                    </span>
+                </div>
+                <p class="text-gray-500 text-sm mb-4">${item.specs}</p>
+                <div class="mt-auto pt-4 border-t border-gray-800 flex justify-between items-center">
+                    <span class="text-2xl font-bold text-white">रु ${item.price.toLocaleString()}</span>
+                    <button class="bg-white text-black px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-500 hover:text-white transition">
+                        View Details
+                    </button>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    </script>
+</body>
+</html>
